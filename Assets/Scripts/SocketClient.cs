@@ -19,7 +19,7 @@ public class SocketClient : MonoBehaviour
 
     public int randomIndex = -1;
 
-    private int currentCamIndex = 6;
+    private int currentCamIndex = 6;   # Modify: Virtual Camera Index On your PC.
 
     public RawImage rawImage; // 用于显示摄像头画面的 RawImage
 
@@ -59,8 +59,8 @@ public class SocketClient : MonoBehaviour
         // 连接到服务器
         // 启动 Python 服务器
         pythonProcess = new Process();
-        pythonProcess.StartInfo.FileName = "D:/Anaconda/python.exe"; // 或者 Python 解释器的完整路径
-        pythonProcess.StartInfo.Arguments = "C:/Users/dlt01/Desktop/1/15.py"; // Python 脚本的路径
+        pythonProcess.StartInfo.FileName = "D:/Anaconda/python.exe"; //Modify: Path to your Python interpreter.
+        pythonProcess.StartInfo.Arguments = "D:backend.py"; //Modify: Path to the Python script on your PC.
         pythonProcess.Start();
 
         WebCamDevice device = WebCamTexture.devices[currentCamIndex];
@@ -78,9 +78,6 @@ public class SocketClient : MonoBehaviour
 
         client = new TcpClient("127.0.0.1", 55555);
         stream = client.GetStream();
-
-        // 发送信息到服务器
-        //if (Input.GetKeyDown(KeyCode.Space)){}
         
         string message = "Hello from Unity!";
         byte[] data = Encoding.UTF8.GetBytes(message);
@@ -108,23 +105,6 @@ public class SocketClient : MonoBehaviour
         DisplayRandomEmoji();
         uiText.text = EmotionsLabel[randomIndex];
     }
-
-
-    // void Update()
-    // {
-        
-    //     // 接收服务器发送的数据
-    //     if (stream.DataAvailable)
-    //     {
-    //         int bytesRead = stream.Read(dataBuffer, 0, dataBuffer.Length);
-    //         string response = Encoding.UTF8.GetString(dataBuffer, 0, bytesRead);
-    //         // for(int i=0;i<response.Length;i++){
-    //         //     UnityEngine.Debug.Log("Received: " + response[i]);
-    //         // }
-    //         //dataBuffer.Dispose();
-    //         UnityEngine.Debug.Log("Received: " + response);
-    //     }
-    // }
 
     void Update()
     {
