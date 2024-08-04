@@ -59,7 +59,7 @@ public class SocketClient : MonoBehaviour
         // 连接到服务器
         // 启动 Python 服务器
         pythonProcess = new Process();
-        pythonProcess.StartInfo.FileName = "D:/Anaconda/python.exe"; // 或者 Python 解释器的完整路径
+        pythonProcess.StartInfo.FileName = "D:/Anaconda/python.exe"; // Path to your Python interpreter.
         pythonProcess.StartInfo.Arguments = "C:/Users/dlt01/Desktop/1/15.py"; // Python 脚本的路径
         pythonProcess.Start();
 
