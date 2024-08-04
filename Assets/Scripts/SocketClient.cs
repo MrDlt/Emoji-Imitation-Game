@@ -19,7 +19,7 @@ public class SocketClient : MonoBehaviour
 
     public int randomIndex = -1;
 
-    private int currentCamIndex = 6;
+    private int currentCamIndex = 6;   # Modify: Virtual Camera Index On your PC.
 
     public RawImage rawImage; // 用于显示摄像头画面的 RawImage
 
