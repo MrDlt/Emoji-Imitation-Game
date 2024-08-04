@@ -111,26 +111,11 @@ def fd_preprocess(orig_image):
     return image
 
 
-# class Timer:
-#     def __init__(self):
-#         self.clock = {}
-
-#     def start(self, key="default"):
-#         self.clock[key] = datetime.datetime.now()
-
-#     def end(self, key="default"):
-#         if key not in self.clock:
-#             raise Exception(f"{key} is not in the clock.")
-#         interval = datetime.datetime.now() - self.clock[key]
-#         del self.clock[key]
-#         return interval.total_seconds()
-
-
 class Model():
     def __init__(self):
         self.labels = ['surprised', 'fearful', 'disgusted', 'happy', 'sad', 'angry','neutral']
-        self.ort_session = onnxruntime.InferenceSession("C:/Users/dlt01/Desktop/1/face_emotions_model.onnx")
-        self.ort_detector = onnxruntime.InferenceSession("C:/Users/dlt01/Desktop/1/version-RFB-320.onnx")
+        self.ort_session = onnxruntime.InferenceSession("C:models/face_emotions_model.onnx")    # Modify: Path to your facial expression recognition(FER) model.  
+        self.ort_detector = onnxruntime.InferenceSession("D:models/version-RFB-320.onnx")    # Modify: Path to your face detection model.
         #self.timer = Timer()
     
     def detect(self, img0, threshold=0.7):
