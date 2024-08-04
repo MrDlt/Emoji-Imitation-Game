@@ -7,4 +7,6 @@ Unity Version: 2022.3.17f1
 
 ### Before running the project, you need to:
 
-1. Install [UnityCapture](https://github.com/schellingb/UnityCapture) On your computer.
+1. Install [UnityCapture](https://github.com/schellingb/UnityCapture) On your PC.
+
+2. Modify some part of the code.
