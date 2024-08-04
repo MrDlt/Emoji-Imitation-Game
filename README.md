@@ -11,10 +11,8 @@ Unity Version: 2022.3.17f1
 
 2. Modify some part of the code.
 
-    a. [Path to your Python Interpreter.](https://github.com/MrDlt/Emoji-Imitation-Game/blob/ae39ee1e73155e218bbd8454a25891688ee39b18/Assets/Scripts/SocketClient.cs#L62)
+    a. [Path to your Python Interpreter and the backend.py on your PC.](https://github.com/MrDlt/Emoji-Imitation-Game/blob/ae39ee1e73155e218bbd8454a25891688ee39b18/Assets/Scripts/SocketClient.cs#L62)
 
-    b. [Path to the Python script on your PC.](https://github.com/MrDlt/Emoji-Imitation-Game/blob/6a0d97efdc6fe709f84147a3b881f29c1600c69a/Assets/Scripts/SocketClient.cs#L63)
+    b. [Virtual Camera Index On your PC.](https://github.com/MrDlt/Emoji-Imitation-Game/blob/1a5d2cb1b8596e2ba17e16434c19cef76a052dda/Assets/Scripts/SocketClient.cs#L22). You can run the find_cam_index.py to help you find all cam index on your PC. 
 
-    c. [Virtual Camera Index On your PC.](https://github.com/MrDlt/Emoji-Imitation-Game/blob/1a5d2cb1b8596e2ba17e16434c19cef76a052dda/Assets/Scripts/SocketClient.cs#L22)
-
-    d. []
+    c. [Path to your facial expression recognition(FER) model and face detection model.](https://github.com/MrDlt/Emoji-Imitation-Game/blob/43e132aeb1b8c059ece25477199901ac09711553/Facial_Expression.py#L117) P.S. The FER model is not in the models folder. You can download it from [there](https://www.kaggle.com/models/lintongdai/face_emotion_recognition).
