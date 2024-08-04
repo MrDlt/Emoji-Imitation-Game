@@ -55,7 +55,6 @@ class Live(object):
                         print("Opening camera is failed!!!")
                     else:
                         print("Video is over.")
-                    #queue.put(cv2.resize(self.template, (self.target[0], self.target[1]), cv2.INTER_AREA))  # 放一张模板
 
                     # queue.put('stop')
                     break
@@ -70,9 +69,6 @@ class Live(object):
         print(f'Virtual Camera Parameters: size: {self.targetSize} fps: {self.fps}.')
         while True:
             frame = queue.get()
-            #queue4inf.put(frame)
-            # if type(frame) == type('stop'):
-            #     break
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)  # BGR TO RGB
             frame = cv2.flip(frame, 1)  # 水平翻转
             cam.send(frame)
@@ -91,31 +87,6 @@ class Live(object):
             #image = cv2.flip(frame, 1)  # 水平翻转
             #label = self.model.fe.fer(image)
             label, face = model.fer(image)
-
-            # x, y, w, h = face
-
-            # cv2.rectangle(frame, (int(x), int(y+h)), (int(x+w), int(y)), (0, 0, 255), 2)#坐标要是整数
-            # labels = ['surprised', 'fearful', 'disgusted', 'happy', 'sad', 'angry','neutral']
-
-            # # 定义文本和方框的位置
-            # text = labels[label]
-            # font = cv2.FONT_HERSHEY_SIMPLEX
-            # font_scale = 1
-            # thickness = 2
-            # color = (0, 0, 255)  # 文字颜色为白色
-            # line_type = cv2.LINE_AA
-
-
-            # # 在方框上方添加文字
-            # text_size = cv2.getTextSize(text, font, font_scale, thickness)[0]
-            # text_x = x + (150 - text_size[0]) // 2  # 计算文字的水平位置
-            # text_y = y - 10  # 文字的垂直位置
-
-            # cv2.putText(frame, text, (text_x, text_y), font, font_scale, color, thickness, line_type)
-
-            # frame = cv2.flip(frame, 1)  # 水平翻转
-
-            # queue4inf.put(frame)
 
             if label != -1:
                 queue_message.put(label)  # 放一张模板
@@ -145,7 +116,6 @@ class Live(object):
 
                 print(f'emotion label: {message}')
                 client.sendall(str(message).encode("utf-8"))
-                #client.sendall(str("/").encode("utf-8"))
             
 
     # 多线程执行一个摄像头
@@ -165,8 +135,6 @@ class Live(object):
 if __name__ == '__main__':
 
     mp.freeze_support()
-    #template_path = ''
-    # file_path = "xxx.mp4"
     file_path = 0  # 摄像头
     real_camera_size = (1920, 1080)  #(640, 480)
     target_size = (1920, 1080)
@@ -178,30 +146,4 @@ if __name__ == '__main__':
 
     live = Live(file=file_path, target=target)
     live.run_single_camera()
-
-    # client.close()
-
-
-
-# client, addr = sock.accept()  # 接受客户端连接请求
-# print(client, "------", addr)  # 输出客户端信息
-# while True:
-#     data = client.recv(1024)  # 接收客户端发送的数据
-#     print(data.decode())  # 输出接收到的数据
-
-#     while True:
-#         ret, frame = cap.read()
-#         image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-#         label = model.fer(image)
-#         if label != -1:
-#             client.sendall(label.encode())
-#             print(f'emotion label: {label}')
-            
-#         cv2.imshow('Frame', frame)
-
-#         # 按下'q'键退出循环
-#         if cv2.waitKey(1) & 0xFF == ord('q'):
-#             break
-
-#     client.close()  # 关闭客户端连接
 
